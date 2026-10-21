@@ -3,15 +3,17 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
   const palettes = {
-    sage: { hex: '#c3f58c', rgb: '195,245,140' },
-    ice: { hex: '#94dcff', rgb: '148,220,255' },
-    ember: { hex: '#ffb28e', rgb: '255,178,142' },
+    sage: { hex: '#236d5c', rgb: '35,109,92', art: '#62b9a4' },
+    ice: { hex: '#2d689d', rgb: '45,104,157', art: '#71b6eb' },
+    ember: { hex: '#a35032', rgb: '163,80,50', art: '#e59c78' },
   };
   const paletteButtons = document.querySelectorAll('[data-palette]');
   function setPalette(name) {
     const palette = palettes[name] || palettes.sage;
     document.documentElement.style.setProperty('--accent', palette.hex);
     document.documentElement.style.setProperty('--accent-rgb', palette.rgb);
+    document.documentElement.style.setProperty('--art-tint', palette.art);
+    document.documentElement.style.setProperty('--art-tint', palette.art);
     document.documentElement.dataset.palette = palettes[name] ? name : 'sage';
     paletteButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.palette === document.documentElement.dataset.palette)));
     try { localStorage.setItem('portfolio.palette', document.documentElement.dataset.palette); } catch { /* Storage is optional. */ }

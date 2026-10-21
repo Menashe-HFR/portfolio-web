@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#eef5df">
+  <meta name="description" content="A little Sunday Drive through Menashe Hoffner’s portfolio. An optional, playful road trip with three project stops.">
+  <title>Sunday Drive — Menashe Hoffner</title>
+  <link rel="icon" href="images/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="drive.css?v=play-2"><script src="projects.js" defer></script><script src="drive-engine.js" defer></script><script src="drive.js?v=play-2" defer></script>
+</head>
+<body>
+  <main class="drive-app" aria-label="Sunday Drive portfolio game">
+    <canvas id="drive-scene" tabindex="0" role="application" aria-label="Sunday Drive. Use left and right arrows or A and D to steer. Space to accelerate. P to pause."></canvas>
+    <header class="drive-header"><a class="drive-brand" href="index.html" aria-label="Menashe Hoffner portfolio">mh<span>.</span></a><div class="drive-wordmark">SUNDAY DRIVE<small>A LITTLE DETOUR BY MENASHE HOFFNER</small></div><div class="drive-header-actions"><button id="pause-drive" type="button" disabled aria-label="Pause drive">Ⅱ Pause</button><a href="index.html#play">Back to portfolio ↗</a></div></header>
+    <div class="drive-hud" id="drive-hud" hidden><div><small>THE SCENIC ROUTE</small><strong id="drive-stop-count">00 / 03</strong><span>project stops</span></div><div class="drive-score"><small>LITTLE SOUVENIRS</small><strong>✦ <span id="drive-stars">0</span></strong><span id="drive-speed">Taking it easy</span></div><div class="drive-progress"><i id="drive-progress"></i></div></div>
+    <section class="drive-overlay" id="drive-overlay" aria-labelledby="drive-heading"><div class="drive-panel" id="drive-panel"><p class="drive-eyebrow">THE PLAYGROUND / NO RUSH, JUST CURIOSITY</p><h1 id="drive-heading">Let’s take<br>the <em>long way.</em></h1><p class="drive-description">A tiny car. A sunny road. A few things I’ve built.<br> Collect stars and stop by three projects along the way.</p><div class="drive-guide"><span><kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> to steer</span><span><kbd>SPACE</kbd> a little faster · <kbd>P</kbd> pause</span><span class="mobile-guide">Use the touch arrows to steer. Hold Boost for a little speed.</span></div><div class="drive-actions"><button class="drive-primary" id="start-drive" type="button">Let’s go <span>→</span></button><a href="index.html#work">Just browse the projects ↗</a></div><p class="drive-footnote">A short drive. Every project is also in the regular portfolio.</p></div></section>
+    <div class="drive-touch" id="drive-touch" hidden><div><button type="button" data-steer="-1" aria-label="Steer left">←</button><button type="button" data-steer="1" aria-label="Steer right">→</button></div><button type="button" id="drive-boost">Boost ↑</button></div>
+    <p class="drive-bottom" aria-hidden="true">BUILT FOR A LITTLE JOY <span>TAKE IT EASY ☀</span></p><p class="drive-status" role="status" id="drive-status">Ready for a Sunday drive.</p>
+    <noscript><p class="drive-noscript">JavaScript starts the drive. You can always <a href="index.html#work">browse all projects here.</a></p></noscript>
+  </main>
+</body>
+</html>

@@ -1,11 +1,22 @@
-.touch-flight-guide { display:none; }
-@media(max-width:600px) { .mission-controls-guide>span:not(.touch-flight-guide) { display:none; } .mission-controls-guide>.touch-flight-guide { display:block; line-height:1.9; } }
+.touch-flight-guide  {
+  display:none;
+}
+@media(max-width:600px)  {
+  .mission-controls-guide>span:not(.touch-flight-guide)  {
+    display:none;
+  }
+  .mission-controls-guide>.touch-flight-guide  {
+    display:block;
+    line-height:1.9;
+  }
+}
 :root  {
-  --space:#080e13;
-  --ink:#e9f0e4;
-  --muted:#9aaea5;
-  --lime:#c3f58c;
-  --line:#a5c6a72b;
+  color-scheme:light;
+  --space:#edf3fa;
+  --ink:#233e54;
+  --muted:#4c6477;
+  --lime:#21695b;
+  --line:#89a9bb66;
   --sans:'DM Sans',Arial,sans-serif;
   --display:'Space Grotesk',Arial,sans-serif;
 }
@@ -62,7 +73,7 @@ button:focus-visible,a:focus-visible,canvas:focus-visible  {
 .flight-vignette  {
   position:absolute;
   inset:0;
-  background:radial-gradient(ellipse at 55% 45%,transparent 25%,#02090b70 100%);
+  background:radial-gradient(ellipse at 55% 45%,transparent 25%,#dce8f52e 100%);
   pointer-events:none;
 }
 .flight-header  {
@@ -75,8 +86,8 @@ button:focus-visible,a:focus-visible,canvas:focus-visible  {
   align-items:center;
   gap:25px;
   padding:28px 40px;
-  border-bottom:1px solid #bfe8c30b;
-  background:linear-gradient(#080e1380,transparent);
+  border-bottom:1px solid #b7ccdf66;
+  background:linear-gradient(#f7fafbdd,transparent);
 }
 .flight-brand  {
   font-family:var(--display);
@@ -94,7 +105,7 @@ button:focus-visible,a:focus-visible,canvas:focus-visible  {
 }
 .flight-wordmark>span  {
   display:block;
-  color:#809b90;
+  color:#526e84;
   font-size:6px;
   letter-spacing:1.6px;
   margin-top:6px;
@@ -107,7 +118,7 @@ button:focus-visible,a:focus-visible,canvas:focus-visible  {
   font-size:10px;
 }
 .flight-header-actions>button  {
-  background:#14251c8a;
+  background:#ffffffcc;
   padding:8px 12px;
   border:1px solid var(--line);
   border-radius:4px;
@@ -130,13 +141,13 @@ button:focus-visible,a:focus-visible,canvas:focus-visible  {
   max-width:520px;
 }
 .mission-overlay:not(.centered)  {
-  background:linear-gradient(90deg,#050b10b3,transparent 80%);
+  background:linear-gradient(90deg,#f4f8fbe8,transparent 80%);
 }
 .flight-eyebrow  {
   display:flex;
   align-items:center;
   gap:10px;
-  color:#b2d0bb;
+  color:#3e6c79;
   font-size:8px;
   letter-spacing:2px;
   line-height:1.7;
@@ -147,7 +158,7 @@ button:focus-visible,a:focus-visible,canvas:focus-visible  {
   height:5px;
   border-radius:50%;
   background:var(--lime);
-  box-shadow:0 0 13px #b8ee88;
+  box-shadow:0 0 13px #b0dcc8;
 }
 .mission-panel h1,.mission-panel h2  {
   font-family:var(--display);
@@ -173,7 +184,7 @@ button:focus-visible,a:focus-visible,canvas:focus-visible  {
   display:flex;
   flex-direction:column;
   gap:10px;
-  color:#8da798;
+  color:#526e80;
   font-size:10px;
 }
 kbd  {
@@ -182,10 +193,10 @@ kbd  {
   font-size:8px;
   letter-spacing:.5px;
   padding:5px 7px;
-  border:1px solid #a2bba03d;
+  border:1px solid #a9bdcb80;
   border-radius:3px;
-  color:#c8d9c2;
-  background:#101e17b3;
+  color:#35566b;
+  background:#ffffffcc;
   margin-right:5px;
 }
 .guide-dot  {
@@ -202,7 +213,7 @@ kbd  {
   min-height:49px;
   padding:15px 21px;
   background:var(--lime);
-  color:#152110;
+  color:#ffffff;
   border:0;
   border-radius:4px;
   font-size:11px;
@@ -213,7 +224,7 @@ kbd  {
   gap:30px;
 }
 .flight-primary:hover  {
-  background:#d3ffa5;
+  background:#185447;
 }
 .flight-primary>span  {
   font-size:20px;
@@ -224,7 +235,7 @@ kbd  {
   background:transparent;
   border:0;
   font-size:10px;
-  color:#bbcab3;
+  color:#3c5c70;
 }
 .flight-secondary:hover  {
   color:var(--lime);
@@ -234,7 +245,7 @@ kbd  {
 }
 .mission-footnote  {
   font-size:8px;
-  color:#6e8b7c;
+  color:#536d7e;
   margin-top:22px;
   letter-spacing:.2px;
 }
@@ -245,7 +256,7 @@ kbd  {
   right:40px;
   display:flex;
   justify-content:space-between;
-  color:#607d70;
+  color:#526f85;
   font-size:7px;
   letter-spacing:1.5px;
   pointer-events:none;
@@ -258,7 +269,7 @@ kbd  {
 }
 .hud-label  {
   display:block;
-  color:#88a697;
+  color:#4e6e84;
   font-size:7px;
   letter-spacing:1.6px;
 }
@@ -272,12 +283,12 @@ kbd  {
   line-height:1;
 }
 .hud-divider  {
-  color:#55715f;
+  color:#6a8b9e;
   margin-inline:8px;
   font-size:23px;
 }
 #signal-total  {
-  color:#6d8c7b;
+  color:#5d798e;
   font-size:25px;
 }
 .signal-progress  {
@@ -289,11 +300,11 @@ kbd  {
   display:block;
   height:2px;
   width:25px;
-  background:#44644c;
+  background:#b3cad5;
 }
 .signal-progress>i.found  {
   background:var(--lime);
-  box-shadow:0 0 8px #a9e87640;
+  box-shadow:0 0 8px #61ad9340;
 }
 .route-panel  {
   position:absolute;
@@ -301,8 +312,8 @@ kbd  {
   top:134px;
   width:190px;
   padding:16px;
-  border:1px solid #89b49726;
-  background:#0a1513a8;
+  border:1px solid #b2c8d980;
+  background:#ffffffd9;
   backdrop-filter:blur(10px);
   border-radius:6px;
 }
@@ -318,11 +329,11 @@ kbd  {
   background:none;
   text-align:left;
   padding:10px 0;
-  color:#a7c0af;
+  color:#355c73;
 }
 .route-node .node-number  {
   font-size:8px;
-  color:#577761;
+  color:#56778b;
   font-variant-numeric:tabular-nums;
 }
 .route-node strong  {
@@ -333,7 +344,7 @@ kbd  {
 }
 .route-node small  {
   display:block;
-  color:#607e6a;
+  color:#547184;
   font-size:6px;
   letter-spacing:1px;
   margin-top:2px;
@@ -345,7 +356,7 @@ kbd  {
   color:var(--lime);
 }
 .route-node:hover  {
-  color:#ecf5e6;
+  color:#21695b;
 }
 .assist-switch  {
   display:flex;
@@ -357,7 +368,7 @@ kbd  {
   border-top:1px solid var(--line);
   background:none;
   font-size:8px;
-  color:#8fae99;
+  color:#4c6c7e;
   text-align:left;
 }
 .assist-switch>span:last-child  {
@@ -367,7 +378,7 @@ kbd  {
 .assist-indicator  {
   width:5px;
   height:5px;
-  background:#506353;
+  background:#8aabb8;
   border-radius:50%;
 }
 .assist-switch[aria-pressed=true] .assist-indicator  {
@@ -382,7 +393,7 @@ kbd  {
   top:46%;
   width:24px;
   height:24px;
-  border:1px solid #b8eab34d;
+  border:1px solid #386e8b66;
   border-radius:50%;
   transform:translate(-50%,-50%);
   pointer-events:none;
@@ -390,7 +401,7 @@ kbd  {
 .flight-crosshair::before,.flight-crosshair::after  {
   content:'';
   position:absolute;
-  background:#b8eab380;
+  background:#386e8b80;
 }
 .flight-crosshair::before  {
   width:6px;
@@ -418,11 +429,11 @@ kbd  {
   font-size:12px;
   font-weight:400;
   margin-block:6px 3px;
-  color:#d5e7c9;
+  color:#244f6b;
 }
 .target-readout>span:last-child  {
   font-size:8px;
-  color:#9cb48b;
+  color:#3e637b;
   font-variant-numeric:tabular-nums;
 }
 .flight-telemetry  {
@@ -456,7 +467,7 @@ kbd  {
   margin-top:15px;
   width:100%;
   height:3px;
-  background:#2e4a37;
+  background:#b9d1da;
 }
 .shield-track>span  {
   display:block;
@@ -478,7 +489,7 @@ kbd  {
   gap:24px;
   align-items:center;
   white-space:nowrap;
-  color:#6f8d79;
+  color:#4c6e83;
   font-size:6px;
   letter-spacing:.6px;
 }
@@ -497,8 +508,8 @@ kbd  {
   top:105px;
   transform:translateX(-50%);
   color:var(--lime);
-  background:#101e14e6;
-  border:1px solid #a2c78050;
+  background:#fffffff2;
+  border:1px solid #94b7c180;
   padding:11px 17px;
   border-radius:4px;
   font-size:9px;
@@ -523,7 +534,7 @@ kbd  {
 .mission-overlay.centered  {
   justify-content:center;
   padding:110px 24px 50px;
-  background:#06100c70;
+  background:#aebed54a;
   backdrop-filter:blur(8px);
   overflow-y:auto;
 }
@@ -531,10 +542,10 @@ kbd  {
   width:min(580px,100%);
   max-width:580px;
   padding:30px;
-  background:#0e1b14f5;
-  border:1px solid #b7e49930;
+  background:#fcfdfbf5;
+  border:1px solid #bdcedb;
   border-radius:9px;
-  box-shadow:0 25px 100px #0006;
+  box-shadow:0 25px 100px #3b577e25;
 }
 .mission-overlay.centered .mission-panel h2  {
   font-size:40px;
@@ -551,10 +562,10 @@ kbd  {
 }
 .discovery-media  {
   margin-top:22px;
-  border:1px solid #53704266;
+  border:1px solid #b6ccd6;
   border-radius:5px;
   overflow:hidden;
-  background:#030806;
+  background:#e6eef4;
 }
 .discovery-media img  {
   width:100%;
@@ -577,8 +588,8 @@ kbd  {
 }
 .discovery-tags>span  {
   padding:4px 8px;
-  border:1px solid #506c3b66;
-  color:#9ab082;
+  border:1px solid #b6cfd5;
+  color:#4c6e7c;
   font-size:7px;
   border-radius:3px;
 }
@@ -606,7 +617,7 @@ kbd  {
   display:flex;
   align-items:center;
   gap:12px;
-  border-top:1px solid #8eae7729;
+  border-top:1px solid #b4cbd770;
   padding:13px 0;
   font-size:12px;
 }
@@ -620,7 +631,7 @@ kbd  {
 }
 .completion-score  {
   font-size:9px;
-  color:#87a674;
+  color:#476b7c;
   margin-top:15px;
   letter-spacing:1px;
 }
@@ -841,9 +852,9 @@ kbd  {
     gap:3px;
   }
   .touch-pad button  {
-    border:1px solid #9bbd8460;
+    border:1px solid #91b5c6aa;
     border-radius:6px;
-    background:#0b1911a8;
+    background:#ffffffdf;
     color:var(--lime);
     font-size:20px;
     touch-action:none;
@@ -869,14 +880,14 @@ kbd  {
     grid-row:2;
     display:grid;
     place-items:center;
-    color:#a1bf8159;
+    color:#4e809c80;
   }
   .boost-button  {
     width:72px;
     height:72px;
-    border:1px solid #9bc27880;
+    border:1px solid #82adbd;
     border-radius:50%;
-    background:#20351cc2;
+    background:#d5efe5ed;
     color:var(--lime);
     font-size:29px;
     touch-action:none;
@@ -889,7 +900,7 @@ kbd  {
     margin-top:1px;
   }
   .boost-button:active,.touch-pad button:active  {
-    background:#4c6731;
+    background:#a6d8c6;
   }
   .mission-overlay.centered  {
     padding:85px 14px 25px;

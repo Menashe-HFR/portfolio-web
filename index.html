@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111310">
+  <meta name="theme-color" content="#faf9f5">
   <meta name="description" content="Menashe Hoffner — software engineer building thoughtful backends, useful tools, and experiments in computer vision. Explore selected projects and get in touch.">
   <title>Menashe Hoffner — Software Engineer</title>
   <link rel="icon" href="images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="default.css">
-  <link rel="stylesheet" href="experience.css">
+  <link rel="stylesheet" href="default.css?v=play-2">
+  <link rel="stylesheet" href="experience.css?v=play-2">
+  <link rel="stylesheet" href="playground.css?v=play-2">
   <script src="projects.js" defer></script>
   <script src="script.js" defer></script>
-  <script src="experience.js" defer></script>
-  <script src="sculpture.js" defer></script>
+  <script src="experience.js?v=play-2" defer></script>
+  <script src="sculpture.js?v=play-2" defer></script>
 </head>
 <body>
   <div class="reading-progress" aria-hidden="true"></div>
@@ -23,20 +24,20 @@
   <header class="site-header wrap">
     <a class="brand" href="#" aria-label="Menashe Hoffner home">mh<span>.</span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#work">Work <span>03</span></a><a href="game.html">Play</a><a href="#about">About</a><a href="#contact">Contact</a>
+      <a href="#work">Work <span>03</span></a><a href="#play">Playground</a><a href="#about">About</a><a href="#contact">Contact</a>
     </nav>
     <a class="header-contact" href="mailto:menasheho@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span></button>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="game.html">Play the portfolio</a><a href="#work">Selected work</a><a href="#about">About me</a><a href="#contact">Get in touch</a></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#play">The playground</a><a href="#work">Selected work</a><a href="#about">About me</a><a href="#contact">Get in touch</a></nav>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-heading">
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> MENASHE HOFFNER <span class="eyebrow-divider">/</span> SOFTWARE ENGINEER</p>
         <h1 id="hero-heading">Good ideas.<br>Thoughtful code.<br><em>Real impact.</em></h1>
-        <p class="hero-description">I turn complex problems into simple, useful software.<br class="desktop-break"> Backend engineering, Python, and a curiosity<br class="desktop-break"> for what’s possible.</p>
-        <div class="hero-actions"><a class="button button-primary" href="game.html">Play my portfolio <span aria-hidden="true">↗</span></a><a class="text-link" href="#work">Browse projects <span aria-hidden="true">↓</span></a></div>
-        <p class="game-invitation">A little space flight. Three projects to discover.</p>
+        <p class="hero-description">I build useful software with Python and Django.<br class="desktop-break"><span class="hero-detail">Backend engineering, thoughtful testing,<br class="desktop-break"> and a curiosity for what’s possible.</span></p>
+        <div class="hero-actions"><a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="#about">A little about me <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-play" aria-label="Choose a little adventure"><p>A LITTLE PLAY? <span>Choose your adventure ↓</span></p><div><a class="hero-play-card hero-drive" href="drive.html"><span class="hero-play-icon" aria-hidden="true">☀</span><span><strong>Sunday Drive</strong><small>Play a sunny driving game.</small></span><b aria-hidden="true">↗</b></a><a class="hero-play-card hero-space" href="game.html"><span class="hero-play-icon" aria-hidden="true">✦</span><span><strong>Orbital Archive</strong><small>Play a space adventure.</small></span><b aria-hidden="true">↗</b></a></div></div>
       </div>
       <div class="hero-art" id="hero-art">
         <div class="art-stars" aria-hidden="true"></div>
@@ -64,6 +65,13 @@
       <div class="project-grid" id="project-grid"></div>
       <noscript><p>Explore the projects: <a href="post-drone.html">Drone Face Tracking</a>, <a href="post-todo.html">Django ToDo</a>, and <a href="post-urlscan.html">URLScan CLI</a>.</p></noscript>
       <a class="github-more" href="https://github.com/Menashe-HFR?tab=repositories" target="_blank" rel="noopener"><span>There’s more where that came from.</span><span>Explore my GitHub <span aria-hidden="true">↗</span></span></a>
+    </section>
+    <section class="play-section wrap" id="play" aria-labelledby="play-heading">
+      <div class="section-heading"><div><p class="eyebrow section-kicker">JUST FOR FUN / THE PLAYGROUND</p><h2 id="play-heading">Take the <em>scenic route.</em></h2></div><p>A different way to explore my work.<br>Pick a little adventure, whenever you feel like it.</p></div>
+      <div class="play-grid">
+        <a class="play-card play-drive" href="drive.html"><div class="play-art drive-art" aria-hidden="true"><div class="mini-road"></div><span class="mini-tree tree-a">♣</span><span class="mini-tree tree-b">♣</span><span class="mini-flower">✳</span><div class="mini-car"><i></i></div><span class="art-sticker">TAKE IT EASY ☀</span></div><div class="play-card-copy"><span class="play-tag">01 / A LITTLE ROAD TRIP</span><h3>Sunday Drive <span aria-hidden="true">↗</span></h3><p>A cute car, a winding road, and a few projects along the way. No rush.</p><span class="play-cta">Go for a drive <span aria-hidden="true">→</span></span></div></a>
+        <a class="play-card play-space" href="game.html"><div class="play-art space-art" aria-hidden="true"><div class="mini-planet"></div><span class="mini-star star-a">✦</span><span class="mini-star star-b">✧</span><span class="mini-rocket">↗</span><span class="art-sticker">STAY CURIOUS ✦</span></div><div class="play-card-copy"><span class="play-tag">02 / A SMALL SPACE ODYSSEY</span><h3>Orbital Archive <span aria-hidden="true">↗</span></h3><p>Pilot a spaceship, gather signals, and discover the stories behind the code.</p><span class="play-cta">Explore the universe <span aria-hidden="true">→</span></span></div></a>
+      </div>
     </section>
     <section class="about-section" id="about" aria-labelledby="about-heading"><div class="wrap about-layout">
       <div class="about-portrait"><img src="images/my_photo.jpeg" width="1051" height="1600" loading="lazy" alt="Menashe Hoffner"><div class="portrait-note"><span class="status-dot"></span> THE HUMAN BEHIND THE CODE</div><span class="portrait-scribble" aria-hidden="true">Hello there! ↗</span></div>
