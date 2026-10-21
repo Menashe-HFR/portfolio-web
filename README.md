@@ -1,56 +1,41 @@
-# Portfolio Web Project
+# Menashe Hoffner — Portfolio
 
-Welcome to my portfolio web project! This project showcases my skills, experience, and projects I have worked on. The web application is deployed using GitHub Pages and can be accessed at [link](https://menashe-hfr.github.io/portfolio-web/).
+A responsive, buildless portfolio with a custom WebGL sculpture, filterable project gallery, and individual project pages. Built with HTML, CSS, and vanilla JavaScript. Compatible with GitHub Pages, including deployment under `/portfolio-web/`.
 
-## Table of Contents
+## Preview locally
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Setup](#setup)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+From this directory, run:
 
-## Introduction
+```sh
+python -m http.server 4173 --bind 127.0.0.1
+```
 
-This project serves as my personal portfolio website, where I present my professional profile, showcase my projects, and provide a way for others to contact me. The website has a clean and modern design, ensuring a pleasant user experience. Feel free to explore and get to know more about me and my work.
+Open <http://127.0.0.1:4173>. There is no install or build step. `index.html` also opens directly, although copying the email address requires a secure browser context such as localhost or HTTPS.
 
-## Features
+## Update projects
 
-1. **Home**: An introduction to who I am, my background, and my expertise.
-2. **Projects**: A collection of my notable projects, with descriptions, screenshots, and links to their respective repositories or live demos.
-3. **Skills**: An overview of my technical skills and areas of expertise.
-4. **Experience**: Information about my work experience, including positions, companies, and responsibilities.
-5. **Education**: Details about my educational background, degrees, and certifications.
-6. **Contact**: A contact form that allows users to reach out to me directly.
+The gallery and project pages use the entries in `projects.js`. Each entry includes its category (`web`, `automation`, or `vision`), title, summary, tags, preview artwork, source repository, and video details. Edit those entries to update the existing projects.
 
-## Technologies Used
+To add a project:
 
-The following technologies and tools were used to develop this portfolio web project:
+1. Add an entry with a unique `id` to `projects.js`.
+2. Duplicate one of the `post-*.html` files. Update its title, description, fallback content, and `data-project` attribute to match the new entry.
+3. Set the entry’s `page` to that new filename and add its assets to `images/`.
+4. Add a filter button in `index.html` if introducing a new category. Project counts update automatically.
 
-- HTML5
-- CSS3
-- JavaScript
-- [Bootstrap](https://getbootstrap.com) - A popular CSS framework for building responsive and mobile-first websites.
-- [GitHub Pages](https://pages.github.com) - A hosting service provided by GitHub to deploy static websites directly from a GitHub repository.
+Project content is local, trusted HTML; do not populate it from untrusted user input.
 
-## Setup
+## Performance and accessibility
 
-To set up this project locally, follow these steps:
+- Dependency-free WebGL artwork: approximately 4,825 vertices, capped pixel density, and at most 30 frames per second.
+- Rendering stops when the artwork leaves the viewport, the tab is hidden, or motion is paused.
+- Respects `prefers-reduced-motion`; a CSS sculpture remains available when WebGL cannot start or loses its context.
+- Videos load only when requested. Project images below the fold use lazy loading.
+- Mobile navigation, keyboard focus indicators, skip links, and accessible project filters.
+- Real `mailto:` contact and clipboard action; no nonfunctional contact form.
+- Existing résumé, project recordings, and original project URLs are preserved.
+- Google Fonts are optional; local system fallback fonts work without network access.
 
-1. Clone the repository: `git clone https://github.comMenashe-HFR/portfolio-web.git`
-2. Navigate to the project directory: `cd portfolio-web`
-3. Open the `index.html` file in your web browser.
+## Publish on GitHub Pages
 
-## Usage
-
-Feel free to explore the website and navigate through its different sections. You can access the live version at [link](https://menashe-hfr.github.io/portfolio-web/). If you have any feedback, questions, or would like to get in touch, please use the contact form provided on the website.
-
-## Contributing
-
-Contributions are welcome! If you find any issues or would like to suggest enhancements, please open an issue or submit a pull request. Any feedback and contributions to improve this project are highly appreciated.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute this project in accordance with the terms of the license.
+Publish the repository root from the branch selected in the repository’s **Settings → Pages**. No bundler, backend, API keys, or package installation is needed. Check the changes in a branch or pull request before updating the existing published branch.
