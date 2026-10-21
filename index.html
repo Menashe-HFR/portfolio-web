@@ -11,11 +11,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="default.css">
+  <link rel="stylesheet" href="experience.css">
   <script src="projects.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="experience.js" defer></script>
   <script src="sculpture.js" defer></script>
 </head>
 <body>
+  <div class="reading-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
     <a class="brand" href="#" aria-label="Menashe Hoffner home">mh<span>.</span></a>
@@ -35,20 +38,27 @@
         <div class="hero-actions"><a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="text-link" href="files/Resume_Menashe_Hoffner.pdf" target="_blank" rel="noopener">My résumé <span aria-hidden="true">↗</span></a></div>
       </div>
       <div class="hero-art" id="hero-art">
+        <div class="art-stars" aria-hidden="true"></div>
+        <div class="art-floor" aria-hidden="true"></div>
+        <div class="art-stage-heading"><span><span class="status-dot"></span> THE CURIOSITY LAB</span><span>001 / LIVE</span></div>
         <div class="art-grid" aria-hidden="true"></div>
         <span class="art-cross cross-one" aria-hidden="true">+</span><span class="art-cross cross-two" aria-hidden="true">+</span>
         <div class="art-orbit" aria-hidden="true"></div>
         <div class="sculpture-fallback" aria-hidden="true"><span></span><span></span><span></span></div>
-        <canvas id="sculpture" aria-hidden="true"></canvas>
+        <canvas id="sculpture" tabindex="0" role="group" aria-label="Interactive 3D sculpture. Drag or use arrow keys to rotate. Press Home to reset."></canvas>
         <div class="art-label label-top"><span class="small-dot"></span> BUILT WITH CURIOSITY</div>
         <div class="art-label label-bottom"><span aria-hidden="true">⌘</span> CODE. CREATE. ITERATE.</div>
-        <div class="art-caption"><span>EXPERIMENT 001</span><button id="motion-toggle" type="button" aria-pressed="false" aria-label="Pause 3D animation">PAUSE MOTION <span aria-hidden="true">Ⅱ</span></button></div>
+        <div class="art-controls">
+          <div class="material-switch" role="group" aria-label="Sculpture appearance" data-render-controls hidden><button type="button" data-material="solid" aria-pressed="true">Alloy</button><button type="button" data-material="wire" aria-pressed="false">Wireframe</button></div>
+          <div class="palette-switch" role="group" aria-label="Choose an atmosphere"><button type="button" class="palette-sage" data-palette="sage" aria-pressed="true" aria-label="Sage green atmosphere" title="Sage"></button><button type="button" class="palette-ice" data-palette="ice" aria-pressed="false" aria-label="Ice blue atmosphere" title="Ice"></button><button type="button" class="palette-ember" data-palette="ember" aria-pressed="false" aria-label="Ember orange atmosphere" title="Ember"></button></div>
+        </div>
+        <div class="art-caption"><span id="art-hint" hidden>DRAG TO EXPLORE <span aria-hidden="true">↔</span></span><button id="motion-toggle" type="button" aria-pressed="false" aria-label="Pause 3D animation">PAUSE MOTION <span aria-hidden="true">Ⅱ</span></button></div>
       </div>
       <div class="hero-bottom"><div class="social-row"><a href="https://github.com/Menashe-HFR" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/menasheho/" target="_blank" rel="noopener">LinkedIn ↗</a></div><a class="scroll-link" href="#work">A LITTLE LESS TALK, A LITTLE MORE CODE <span aria-hidden="true">↓</span></a></div>
     </section>
     <div class="stack-strip"><div class="wrap"><span class="stack-intro">MY EVERYDAY TOOLKIT</span><span>Python</span><i>✳</i><span>Django</span><i>✳</i><span>Pytest</span><i>✳</i><span>AWS</span><i>✳</i><span>Java</span><i>✳</i><span>HTML & CSS</span></div></div>
     <section class="work-section wrap" id="work" aria-labelledby="work-heading">
-      <div class="section-heading"><div><p class="eyebrow section-kicker">01 / SELECTED PROJECTS</p><h2 id="work-heading">Built to do <em>something.</em></h2></div><p>A few things I’ve made.<br>Each one, a different problem to solve.</p></div>
+      <div class="section-heading"><div><p class="eyebrow section-kicker">01 / SELECTED PROJECTS</p><h2 id="work-heading">Built to do <em>something.</em></h2></div><p>Real projects. Real experiments.<br> Hit play and take a closer look.</p></div>
       <div class="work-toolbar"><div class="filters" role="group" aria-label="Filter projects"><button class="filter active" data-filter="all" aria-pressed="true">All work <sup>03</sup></button><button class="filter" data-filter="web" aria-pressed="false">Web apps</button><button class="filter" data-filter="automation" aria-pressed="false">Automation</button><button class="filter" data-filter="vision" aria-pressed="false">Computer vision</button></div><span class="work-count" id="work-count" role="status">SHOWING 03 PROJECTS</span></div>
       <div class="project-grid" id="project-grid"></div>
       <noscript><p>Explore the projects: <a href="post-drone.html">Drone Face Tracking</a>, <a href="post-todo.html">Django ToDo</a>, and <a href="post-urlscan.html">URLScan CLI</a>.</p></noscript>
@@ -60,6 +70,9 @@
     </div></section>
     <section class="contact-section wrap" id="contact" aria-labelledby="contact-heading"><p class="eyebrow section-kicker">03 / WHAT’S NEXT?</p><div class="contact-title"><h2 id="contact-heading">Have something<br>in <em>mind?</em></h2><a class="contact-arrow" href="mailto:menasheho@gmail.com" aria-label="Email Menashe"><span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><p>A project, an opportunity, or just a good conversation.<br>I’d love to hear from you.</p><div class="email-group"><a href="mailto:menasheho@gmail.com">menasheho@gmail.com</a><button id="copy-email" aria-label="Copy email address" title="Copy email address"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button><span id="copy-status" class="copy-status" role="status"></span></div></div></section>
   </main>
+  <dialog class="demo-dialog" id="demo-dialog" aria-labelledby="demo-title">
+    <div class="demo-shell"><header class="demo-header"><div><p class="eyebrow">PROJECT IN MOTION <span class="demo-counter" id="demo-counter"></span></p><h2 id="demo-title">Project demo</h2></div><button class="demo-close" type="button" aria-label="Close project demo"><span aria-hidden="true">×</span></button></header><div class="demo-media" id="demo-media"></div><footer class="demo-footer"><a class="text-link" id="demo-details" href="#work">Explore the project <span aria-hidden="true">↗</span></a><div class="demo-navigation"><button type="button" id="demo-prev" aria-label="Previous project demo">←</button><span class="demo-key-hint">← &nbsp; → TO EXPLORE</span><button type="button" id="demo-next" aria-label="Next project demo">→</button></div></footer></div>
+  </dialog>
   <footer class="site-footer wrap"><a class="brand" href="#" aria-label="Back to top">mh<span>.</span></a><p>© <span id="year">2026</span> Menashe Hoffner. Built with intention.</p><div class="social-row"><a href="https://github.com/Menashe-HFR" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/menasheho/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://youtube.com/playlist?list=PL5MFoRJmoMGg66X_zGDpmaps_6xyPIiBt" target="_blank" rel="noopener">YouTube ↗</a></div><a class="back-top" href="#" aria-label="Back to top">↑</a></footer>
 </body>
 </html>

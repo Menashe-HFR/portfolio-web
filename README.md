@@ -36,6 +36,15 @@ Project content is local, trusted HTML; do not populate it from untrusted user i
 - Existing résumé, project recordings, and original project URLs are preserved.
 - Google Fonts are optional; local system fallback fonts work without network access.
 
+## Interactive experience
+
+- Drag the sculpture horizontally or focus it and use the arrow keys. Home resets its orientation. Vertical touch gestures still scroll the page.
+- Switch between shaded alloy and a wireframe mesh. Choose Sage, Ice, or Ember to change the artwork and site accent; this preference is stored locally when storage is available.
+- Open any “Watch demo” button for a native modal video viewer. Previous/next buttons and arrow keys browse projects; Escape closes the viewer and restores focus. Video shortcuts keep working when the video has focus. Closing releases the video resource.
+- Fine-pointer devices get a gentle card tilt and spotlight. Touch devices keep ordinary tap behavior.
+- One-time entrance transitions and a reading progress line add depth without scroll interception. Reduced-motion preferences disable entrances and pointer tilt.
+- `experience.css` and `experience.js` contain the optional homepage interaction layer. No installation or build step is needed.
+
 ## Publish on GitHub Pages
 
 Publish the repository root from the branch selected in the repository’s **Settings → Pages**. No bundler, backend, API keys, or package installation is needed. Check the changes in a branch or pull request before updating the existing published branch.
