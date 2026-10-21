@@ -8,7 +8,7 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   let gl;
   try { gl = canvas.getContext('webgl', { alpha: true, antialias: true, powerPreference: 'low-power' }); } catch { /* CSS fallback remains visible. */ }
-  if (!gl) { toggle.hidden = true; return; }
+  if (!gl) { toggle.hidden = true; canvas.tabIndex = -1; canvas.setAttribute('aria-hidden', 'true'); return; }
   function shader(type, source) {
     const result = gl.createShader(type);
     gl.shaderSource(result, source); gl.compileShader(result);
@@ -36,6 +36,8 @@
     `);
     const fragment = shader(gl.FRAGMENT_SHADER, `
       precision mediump float;
+      uniform vec3 tint;
+      uniform float wireframe;
       varying vec3 vNormal; varying vec3 vPosition;
       void main() {
         vec3 n = normalize(vNormal);
@@ -47,18 +49,19 @@
         float spec = pow(max(dot(n,normalize(key+eye)),0.),55.);
         float spec2 = pow(max(dot(n,normalize(fill+eye)),0.),24.);
         float rim = pow(1.-max(dot(n,eye),0.),3.);
-        vec3 base = vec3(.56,.75,.36);
+        vec3 base = tint * .78;
         vec3 color = base * (.18 + diffuse*.76 + soft*.25);
-        color += vec3(.93,1.,.77)*spec*.8 + vec3(.7,.89,.48)*spec2*.24;
-        color += vec3(.29,.42,.17)*rim*.5;
+        color += mix(tint,vec3(1.),.65)*spec*.8 + tint*spec2*.24;
+        color += tint*rim*.22;
         float stripes = .985 + .015*sin(vPosition.y*200.);
-        gl_FragColor = vec4(color*stripes,1.);
+        if (wireframe > .5) color = tint * (.45 + diffuse*.55 + soft*.22);
+        gl_FragColor = vec4(color*stripes,wireframe > .5 ? .74 : 1.);
       }
     `);
     const program = gl.createProgram(); gl.attachShader(program, vertex); gl.attachShader(program, fragment); gl.linkProgram(program);
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error('Unable to link artwork.');
     gl.useProgram(program);
-    const vertices = [], normals = [], indices = [];
+    const vertices = [], normals = [], indices = [], wireIndices = [];
     const segments = 192, sides = 24;
     function center(t) {
       const r = 1.03 + .35 * Math.cos(3*t);
@@ -78,6 +81,8 @@
         if (i<segments && j<sides) {
           const a = i*(sides+1)+j, b = a+sides+1;
           indices.push(a,b,a+1,b,b+1,a+1);
+          if (i%4 === 0) wireIndices.push(a,a+1);
+          if (j%3 === 0) wireIndices.push(a,b);
         }
       }
     }
@@ -86,11 +91,21 @@
       const location = gl.getAttribLocation(program,name); gl.enableVertexAttribArray(location); gl.vertexAttribPointer(location,3,gl.FLOAT,false,0,0);
     }
     attribute('position',vertices); attribute('normal',normals);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,gl.createBuffer()); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(indices),gl.STATIC_DRAW);
+    const solidBuffer = gl.createBuffer(), wireBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,solidBuffer); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(indices),gl.STATIC_DRAW);
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,wireBuffer); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(wireIndices),gl.STATIC_DRAW);
     gl.enable(gl.DEPTH_TEST); gl.clearColor(0,0,0,0);
-    const uniforms = Object.fromEntries(['rotation','pointer','aspect'].map(name => [name, gl.getUniformLocation(program,name)]));
+    gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
+    const uniforms = Object.fromEntries(['rotation','pointer','aspect','tint','wireframe'].map(name => [name, gl.getUniformLocation(program,name)]));
     let rotation=.35, visible=true, paused=reducedMotion.matches, frame=0, lastTime=0, previousDraw=0, lost=false;
     let pointerX=0,pointerY=0,currentX=0,currentY=0;
+    let wireframe=false, dragging=false, dragPointer=null, lastDragX=0, lastDragY=0, demandFrame=0;
+    let tint=[.765,.96,.55];
+    function readTint() {
+      const hex=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      if (/^#[\da-f]{6}$/i.test(hex)) tint=[1,3,5].map(offset=>parseInt(hex.slice(offset,offset+2),16)/255);
+    }
+    readTint();
     function updateToggle() {
       toggle.setAttribute('aria-pressed',String(paused));
       toggle.setAttribute('aria-label', paused ? 'Play 3D animation' : 'Pause 3D animation');
@@ -104,13 +119,20 @@
       if (canvas.width!==width||canvas.height!==height) { canvas.width=width;canvas.height=height;gl.viewport(0,0,width,height); }
       gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
       gl.uniform1f(uniforms.rotation,rotation); gl.uniform2f(uniforms.pointer,currentX,currentY); gl.uniform1f(uniforms.aspect,width/height);
-      gl.drawElements(gl.TRIANGLES,indices.length,gl.UNSIGNED_SHORT,0);
+      gl.uniform3fv(uniforms.tint,tint); gl.uniform1f(uniforms.wireframe,wireframe?1:0);
+      if (wireframe) gl.enable(gl.BLEND); else gl.disable(gl.BLEND);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,wireframe?wireBuffer:solidBuffer);
+      gl.drawElements(wireframe?gl.LINES:gl.TRIANGLES,wireframe?wireIndices.length:indices.length,gl.UNSIGNED_SHORT,0);
+    }
+    function renderOnDemand() {
+      if (demandFrame || lost) return;
+      demandFrame=requestAnimationFrame(()=>{demandFrame=0;draw();});
     }
     function tick(time) {
       frame=0;
       if (paused||!visible||document.hidden||lost) return;
       if (time-previousDraw>=1000/30) {
-        rotation+=Math.min(lastTime ? time-lastTime : 33,70)*.00013;
+        if (!dragging) rotation+=Math.min(lastTime ? time-lastTime : 33,70)*.00013;
         currentX+=(pointerX-currentX)*.09; currentY+=(pointerY-currentY)*.09;
         draw();lastTime=time;previousDraw=time;
       }
@@ -122,17 +144,62 @@
       if (!paused&&visible&&!document.hidden&&!lost) frame=requestAnimationFrame(tick);
     }
     canvas.addEventListener('pointermove',event => {
+      if (dragging && event.pointerId===dragPointer) {
+        rotation+=(event.clientX-lastDragX)*.008;
+        currentY=Math.max(-1.8,Math.min(1.8,currentY+(event.clientY-lastDragY)*.009));
+        pointerY=currentY; lastDragX=event.clientX; lastDragY=event.clientY;
+        if (paused) renderOnDemand();
+        return;
+      }
       if (paused||reducedMotion.matches||event.pointerType==='touch') return;
       const rect=canvas.getBoundingClientRect();pointerX=(event.clientX-rect.left)/rect.width*2-1;pointerY=(event.clientY-rect.top)/rect.height*2-1;
     },{passive:true});
-    canvas.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;},{passive:true});
+    canvas.addEventListener('pointerdown',event=>{
+      if (event.button!==0 || lost) return;
+      dragging=true;dragPointer=event.pointerId;lastDragX=event.clientX;lastDragY=event.clientY;
+      canvas.setPointerCapture(event.pointerId);canvas.classList.add('is-dragging');
+    });
+    function endDrag(event) {
+      if (event.pointerId!==dragPointer) return;
+      dragging=false;dragPointer=null;canvas.classList.remove('is-dragging');
+      if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+    }
+    canvas.addEventListener('pointerup',endDrag);
+    canvas.addEventListener('pointercancel',endDrag);
+    canvas.addEventListener('lostpointercapture',endDrag);
+    canvas.addEventListener('pointerleave',()=>{if(!dragging){pointerX=0;pointerY=0;}},{passive:true});
+    canvas.addEventListener('keydown',event=>{
+      if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(event.key)) return;
+      event.preventDefault();
+      if (event.key==='Home') {rotation=.35;currentX=0;currentY=0;}
+      if (event.key==='ArrowLeft') rotation-=.18;
+      if (event.key==='ArrowRight') rotation+=.18;
+      if (event.key==='ArrowUp') currentY=Math.max(-1.8,currentY-.25);
+      if (event.key==='ArrowDown') currentY=Math.min(1.8,currentY+.25);
+      pointerX=currentX;pointerY=currentY;renderOnDemand();
+    });
+    document.querySelectorAll('[data-material]').forEach(button=>button.addEventListener('click',()=>{
+      wireframe=button.dataset.material==='wire';
+      document.querySelectorAll('[data-material]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+      renderOnDemand();
+    }));
+    document.addEventListener('portfolio:palette',()=>{readTint();renderOnDemand();});
     toggle.addEventListener('click',()=>{paused=!paused;updateToggle();sync();});
     reducedMotion.addEventListener('change',event=>{paused=event.matches;updateToggle();sync();draw();});
     document.addEventListener('visibilitychange',sync);
     new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();},{threshold:0.05}).observe(canvas);
     new ResizeObserver(draw).observe(canvas);
-    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;sync();container.classList.remove('has-webgl');canvas.hidden=true;toggle.hidden=true;});
-    container.classList.add('has-webgl'); updateToggle();draw();sync();
+    function showFallback() {
+      lost=true;sync();cancelAnimationFrame(demandFrame);
+      container.classList.remove('has-webgl');canvas.hidden=true;toggle.hidden=true;
+      document.querySelector('[data-render-controls]').hidden=true;
+      document.querySelector('#art-hint').hidden=true;
+    }
+    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();showFallback();});
+    container.classList.add('has-webgl');
+    document.querySelector('[data-render-controls]').hidden=false;
+    document.querySelector('#art-hint').hidden=false;
+    updateToggle();draw();sync();
   } catch {
     canvas.hidden=true;toggle.hidden=true;container.classList.remove('has-webgl');
   }
