@@ -45,6 +45,25 @@ Project content is local, trusted HTML; do not populate it from untrusted user i
 - One-time entrance transitions and a reading progress line add depth without scroll interception. Reduced-motion preferences disable entrances and pointer tilt.
 - `experience.css` and `experience.js` contain the optional homepage interaction layer. No installation or build step is needed.
 
+## Orbital Archive game
+
+`game.html` is a playable space exploration portfolio. The homepage’s primary action opens it; the standard gallery, résumé, and contact remain directly accessible.
+
+- Fly with physical WASD keys or arrow keys. Hold Space to boost, P or Escape to pause. A mouse drag or the mobile direction pad also steers the ship.
+- Follow the diamonds, avoid asteroids, and align with the three project portals. Recovering a portal awards 250 points and opens that real project’s description, demo, and case study. Each data fragment awards 25 points.
+- Navigation assist automatically aligns the ship and avoids collision damage. It is available from the briefing and during a flight. Manual steering takes back control.
+- A depleted shield offers a retry without losing discoveries. A missed portal returns on the next orbit. Completing the route opens the full archive and contact link.
+- Progress is stored locally under `portfolio.orbital-save.v1`; malformed/unavailable storage falls back safely. Restart expedition or Fly again resets only game progress.
+- The simulation pauses when the page loses focus or becomes hidden. Reduced motion removes decorative bobbing, animated planet modules, and boost streaks; explicitly started flight remains playable.
+- Artwork uses a cached procedural background and lightweight Canvas 2D perspective projection of world coordinates. No game library, 3D asset download, backend, or build step is required.
+- `flight-engine.js` contains deterministic simulation rules. `game.js` handles rendering and accessible DOM controls. `game.css` is scoped to the game page.
+
+Run the simulation checks with:
+
+```sh
+node --test tests/flight-engine.test.cjs
+```
+
 ## Publish on GitHub Pages
 
 Publish the repository root from the branch selected in the repository’s **Settings → Pages**. No bundler, backend, API keys, or package installation is needed. Check the changes in a branch or pull request before updating the existing published branch.

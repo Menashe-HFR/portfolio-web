@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#080e13">
+  <meta name="description" content="Explore Menashe Hoffner’s portfolio as a space flight game. Pilot a ship, collect signals, and discover Python, Django, and computer vision projects.">
+  <title>Orbital Archive — Menashe Hoffner</title>
+  <link rel="icon" href="images/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="game.css"><script src="projects.js" defer></script><script src="flight-engine.js" defer></script><script src="game.js" defer></script>
+</head>
+<body>
+  <main class="flight-app" aria-label="Orbital Archive portfolio game">
+    <canvas id="flight-scene" tabindex="0" role="application" aria-label="Space flight. Use arrow keys or W A S D to steer, Space to boost, and P to pause." aria-describedby="flight-instructions"></canvas>
+    <div class="flight-vignette" aria-hidden="true"></div>
+    <header class="flight-header"><a class="flight-brand" href="index.html" aria-label="Menashe Hoffner portfolio">mh<span>.</span></a><div class="flight-wordmark">ORBITAL ARCHIVE<span>AN EXPERIMENT BY MENASHE HOFFNER</span></div><div class="flight-header-actions"><button id="pause-flight" type="button" aria-label="Pause flight" disabled>Ⅱ <span>Pause</span></button><a href="index.html#work">Browse portfolio <span aria-hidden="true">↗</span></a></div></header>
+    <div class="flight-hud" id="flight-hud" hidden>
+      <div class="mission-readout"><span class="hud-label">SIGNALS RECOVERED</span><strong><span id="signal-count">00</span><span class="hud-divider">/</span><span id="signal-total">03</span></strong><div class="signal-progress" id="signal-progress" aria-hidden="true"></div></div>
+      <aside class="route-panel" aria-label="Project navigation"><span class="hud-label">FLIGHT PLAN</span><div id="route-list"></div><button class="assist-switch" id="assist-toggle" type="button" aria-pressed="false"><span class="assist-indicator"></span>Navigation assist <span id="assist-state">OFF</span></button></aside>
+      <div class="flight-crosshair" aria-hidden="true"><span></span></div>
+      <div class="target-readout"><span class="hud-label" id="target-label">NEXT SIGNAL</span><strong id="target-name">Drone Face Tracking</strong><span id="target-distance">160 u</span></div>
+      <div class="flight-telemetry"><div><span class="hud-label">SCORE</span><strong id="flight-score">00000</strong></div><div class="shield-readout"><span class="hud-label">SHIELD <span id="shield-value">100%</span></span><div class="shield-track"><span id="shield-bar"></span></div></div><div><span class="hud-label">THRUST</span><strong id="flight-thrust">CRUISE</strong></div></div>
+      <div class="flight-keyboard" id="flight-instructions"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / ARROWS TO STEER</span><span><kbd>SPACE</kbd> BOOST</span><span><kbd>P</kbd> PAUSE</span></div>
+      <div class="touch-controls"><div class="touch-pad" role="group" aria-label="Steer the ship"><button type="button" data-steer="up" aria-label="Steer up">↑</button><button type="button" data-steer="left" aria-label="Steer left">←</button><span aria-hidden="true">✧</span><button type="button" data-steer="right" aria-label="Steer right">→</button><button type="button" data-steer="down" aria-label="Steer down">↓</button></div><button class="boost-button" id="touch-boost" type="button" aria-label="Hold to boost">↟<span>BOOST</span></button></div>
+    </div>
+    <section class="mission-overlay" id="mission-overlay" aria-labelledby="mission-heading">
+      <div class="mission-panel intro-panel" id="mission-panel">
+        <p class="flight-eyebrow"><span class="live-light"></span> PLAYABLE PORTFOLIO / EXPEDITION 001</p>
+        <h1 id="mission-heading">Explore my<br><em>universe.</em></h1>
+        <p class="mission-description">Every project has a story. Fly through mine.<br>Recover three signals to discover what I’ve built.</p>
+        <div class="mission-controls-guide"><span><kbd>WASD</kbd> or <kbd>↑ ↓ ← →</kbd> Steer your ship</span><span><kbd>SPACE</kbd> Boost <span class="guide-dot">·</span> <kbd>P</kbd> Pause</span><span class="touch-flight-guide">Use the direction pad to steer.<br>Hold Boost to accelerate. Tap Ⅱ to pause.</span></div>
+        <div class="mission-actions"><button class="flight-primary" id="launch-flight" type="button">Launch expedition <span aria-hidden="true">↗</span></button><button class="flight-secondary" id="launch-assisted" type="button">Take the guided flight <span aria-hidden="true">→</span></button></div>
+        <p class="mission-footnote">About a minute. No account. Progress saved on this device.</p>
+        <noscript><p>This experience needs JavaScript. <a href="index.html#work">Explore all projects directly →</a></p></noscript>
+      </div>
+    </section>
+    <div class="flight-toast" id="flight-toast" role="status" aria-live="polite"></div>
+    <div class="flight-status sr-only" id="flight-status" role="status" aria-live="polite"></div>
+    <div class="flight-coordinate" aria-hidden="true">MH—01 <span>PERSONAL ORBIT / EST. 2026</span></div>
+  </main>
+</body>
+</html>

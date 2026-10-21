@@ -1,4 +1,5 @@
 /* Optional interaction layer. Core content and links remain usable without it. */
+.game-invitation { margin-top: 15px; color: var(--muted); font-size: 10px; letter-spacing: .3px; }
 :root  {
   --accent-rgb: 195,245,140;
 }
