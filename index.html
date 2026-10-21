@@ -1,191 +1,65 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Menashe Hoffner</title>
-        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
-
-
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
-
-        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap" rel="stylesheet">
-    
-        <link rel="stylesheet" type="text/css" href="default.css">    
-        <link id="theme-style" rel="stylesheet" type="text/css" href="">
-
-    </head>
-
-    <body>
-        
-        <section class="s1">
-            <div class="main-container">
-                <div class="greeting-wrapper">
-                    <h1>Hi, I'm Menashe Hoffner</h1>
-                </div>
-
-                <div class="intro-wrapper">
-                    <div class="nav-wrapper">
-                        <div class="dots-wrapper">
-                            <div id="dot-1" class="browser-dot"></div>
-                            <div id="dot-2" class="browser-dot"></div>
-                            <div id="dot-3" class="browser-dot"></div>                   
-                        </div>
-                        
-                        <ul id="navigation">
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="left-column">
-                        <img id="profile_pic" src="images/my_photo.jpeg" >
-                        <h5 style="text-align: center; line-height: 0;">Personalize Theme</h5>
-                        <div id="theme-options-wrapper">
-                            <div data-mode="light" id="light-mode" class="theme-dot"></div>
-                            <div data-mode="blue" id="blue-mode" class="theme-dot"></div>
-                            <div data-mode="green" id="green-mode" class="theme-dot"></div>
-                            <div data-mode="purple" id="purple-mode" class="theme-dot"></div>
-                        </div>
-                    
-                        <p id="settins-note">Theme setting wiil be saved for <br> your next visit</p>
-                    </div>
-
-                    <div class="right-column">
-
-                        <div id="preview-shadow">
-                            <div id="preview">
-                                <div id="corner-tl" class="corner"></div>
-                                <div id="corner-tr" class="corner"></div>
-                                <h3>Software Engineer</h3>
-                                <p>I'm Backend Software Engineer with a passion for Python </p>
-                                <div id="corner-bl" class="corner"></div>
-                                <div id="corner-br" class="corner"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        
-
-        <section class="s2">
-            <div class="main-container">
-                <div class="about-wrapper">
-                    <div class="about-me">
-                        <h4>More about me</h4>
-
-                        <p>I'm Software Engineer with experience in writing, testing, and reviewing code.  </p>
-
-                        <p>Team player, Brings with me a good vibe.</p>
-
-                        <hr>
-
-                        <h4>TOP SKILLS</h4>
-
-                        <p>Backend developer with primary focus on Django <a target="_blank" href="files/Resume_Menashe_Hoffner.pdf">Download Resume</a></p>
-                    
-                        <div id="skills">
-                            <ul>
-                                <li>Python</li>
-                                <li>Django</li>
-                                <li>Pytest</li>
-                                <li></li>
-                            </ul>
-
-                            <ul>
-                                <li>Java</li>
-                                <li>HTML/CSS</li>
-                                <li>Aws</li>
-                            </ul>
-
-                        </div>
-                    
-                    </div>
-
-                    <div class="social-links">
-                        <img id="social-img" src="images/linkedin.png">
-                        <h3>Find me on Linkedin & Youtube</h3>
-                        <a target="_blank" href="https://www.linkedin.com/in/menasheho/">Linkedin: @Menashe Hoffner</a>
-                        <br>
-                        <a target="_blank" href="https://youtube.com/playlist?list=PL5MFoRJmoMGg66X_zGDpmaps_6xyPIiBt">Youtube: @Menashe Hoffner</a>
-                        
-
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="s1">
-            <div class="main-container">
-                <h3 style="text-align: center;">Some of my project</h3>
-
-                <div class="post-wrapper">
-
-                    <div>
-                        <div class="post">
-                            <img class="thumbnail" src="images/ToDo-list2.png">
-                            <div class="post-preview">
-                                <h6 class="post-title">ToDo List</h6>
-                                <p class="post-intro">Django ToDo List app with user accounts. I used Python, Django, CSS/HTML </p>
-                                <a href="post-todo.html">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="post">
-                            <img class="thumbnail" src="images/urlscan-img.png">
-                            <div class="post-preview">
-                                <h6 class="post-title">Urlscan-cli</h6>
-                                <p class="post-intro">CLI app to generate CSV file with urlscan.io results</p>
-                                <a href="post-urlscan.html">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <div class="post">
-                            <img class="thumbnail" src="images/drone-img.jpg">
-                            <div class="post-preview">
-                                <h6 class="post-title">Drone Face Traking</h6>
-                                <p class="post-intro">Face recognition & tracking with drone</p>
-                                <a href="post-drone.html">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                                       
-
-                </div>
-            </div>
-        </section>
-
-        <section class="s2">
-            <div class="main-container">
-                <h4 style="text-align: center;">Get In Touch</h4>
-
-                <form id="contact-form">
-                    <a name="contact"></a>
-                    <label>Name</label>
-                    <input class="input-field" type="text" name="name">
-                    
-                    <label>Subject</label>
-                    <input class="input-field" type="text" name="subject">
-                    
-                    <label>Email</label>
-                    <input class="input-field" type="text" name="email">
-                    
-                    <label>message</label>
-                    <textarea class="input-field" name="message"></textarea>
-                    
-                    <input id="submit-btn" type="submit" value="Send">
-                </form>
-            </div>
-        </section>
-
-        <script type="text/javascript" src="script.js"></script>
-
-    </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111310">
+  <meta name="description" content="Menashe Hoffner — software engineer building thoughtful backends, useful tools, and experiments in computer vision. Explore selected projects and get in touch.">
+  <title>Menashe Hoffner — Software Engineer</title>
+  <link rel="icon" href="images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="default.css">
+  <script src="projects.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="sculpture.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="#" aria-label="Menashe Hoffner home">mh<span>.</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#work">Work <span>03</span></a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="header-contact" href="mailto:menasheho@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span></button>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#work">Selected work</a><a href="#about">About me</a><a href="#contact">Get in touch</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> MENASHE HOFFNER <span class="eyebrow-divider">/</span> SOFTWARE ENGINEER</p>
+        <h1 id="hero-heading">Good ideas.<br>Thoughtful code.<br><em>Real impact.</em></h1>
+        <p class="hero-description">I turn complex problems into simple, useful software.<br class="desktop-break"> Backend engineering, Python, and a curiosity<br class="desktop-break"> for what’s possible.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="text-link" href="files/Resume_Menashe_Hoffner.pdf" target="_blank" rel="noopener">My résumé <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="hero-art" id="hero-art">
+        <div class="art-grid" aria-hidden="true"></div>
+        <span class="art-cross cross-one" aria-hidden="true">+</span><span class="art-cross cross-two" aria-hidden="true">+</span>
+        <div class="art-orbit" aria-hidden="true"></div>
+        <div class="sculpture-fallback" aria-hidden="true"><span></span><span></span><span></span></div>
+        <canvas id="sculpture" aria-hidden="true"></canvas>
+        <div class="art-label label-top"><span class="small-dot"></span> BUILT WITH CURIOSITY</div>
+        <div class="art-label label-bottom"><span aria-hidden="true">⌘</span> CODE. CREATE. ITERATE.</div>
+        <div class="art-caption"><span>EXPERIMENT 001</span><button id="motion-toggle" type="button" aria-pressed="false" aria-label="Pause 3D animation">PAUSE MOTION <span aria-hidden="true">Ⅱ</span></button></div>
+      </div>
+      <div class="hero-bottom"><div class="social-row"><a href="https://github.com/Menashe-HFR" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/menasheho/" target="_blank" rel="noopener">LinkedIn ↗</a></div><a class="scroll-link" href="#work">A LITTLE LESS TALK, A LITTLE MORE CODE <span aria-hidden="true">↓</span></a></div>
+    </section>
+    <div class="stack-strip"><div class="wrap"><span class="stack-intro">MY EVERYDAY TOOLKIT</span><span>Python</span><i>✳</i><span>Django</span><i>✳</i><span>Pytest</span><i>✳</i><span>AWS</span><i>✳</i><span>Java</span><i>✳</i><span>HTML & CSS</span></div></div>
+    <section class="work-section wrap" id="work" aria-labelledby="work-heading">
+      <div class="section-heading"><div><p class="eyebrow section-kicker">01 / SELECTED PROJECTS</p><h2 id="work-heading">Built to do <em>something.</em></h2></div><p>A few things I’ve made.<br>Each one, a different problem to solve.</p></div>
+      <div class="work-toolbar"><div class="filters" role="group" aria-label="Filter projects"><button class="filter active" data-filter="all" aria-pressed="true">All work <sup>03</sup></button><button class="filter" data-filter="web" aria-pressed="false">Web apps</button><button class="filter" data-filter="automation" aria-pressed="false">Automation</button><button class="filter" data-filter="vision" aria-pressed="false">Computer vision</button></div><span class="work-count" id="work-count" role="status">SHOWING 03 PROJECTS</span></div>
+      <div class="project-grid" id="project-grid"></div>
+      <noscript><p>Explore the projects: <a href="post-drone.html">Drone Face Tracking</a>, <a href="post-todo.html">Django ToDo</a>, and <a href="post-urlscan.html">URLScan CLI</a>.</p></noscript>
+      <a class="github-more" href="https://github.com/Menashe-HFR?tab=repositories" target="_blank" rel="noopener"><span>There’s more where that came from.</span><span>Explore my GitHub <span aria-hidden="true">↗</span></span></a>
+    </section>
+    <section class="about-section" id="about" aria-labelledby="about-heading"><div class="wrap about-layout">
+      <div class="about-portrait"><img src="images/my_photo.jpeg" width="1051" height="1600" loading="lazy" alt="Menashe Hoffner"><div class="portrait-note"><span class="status-dot"></span> THE HUMAN BEHIND THE CODE</div><span class="portrait-scribble" aria-hidden="true">Hello there! ↗</span></div>
+      <div class="about-copy"><p class="eyebrow section-kicker">02 / A LITTLE ABOUT ME</p><h2 id="about-heading">An engineer’s mind.<br><em>A builder’s instinct.</em></h2><p>I’m Menashe, a software engineer with a passion for Python and backend development. I enjoy taking an idea apart, understanding how it works, and turning it into something useful.</p><p>From Django applications to a drone that follows a face, I learn by building. I care about readable code, thoughtful testing, and being the kind of teammate people enjoy working with.</p><div class="about-skills"><div><span class="skill-number">01</span><div><h3>Backend at heart</h3><p>Python · Django · Java</p></div><span aria-hidden="true">↗</span></div><div><span class="skill-number">02</span><div><h3>Quality by default</h3><p>Testing · Pytest · Code review</p></div><span aria-hidden="true">↗</span></div><div><span class="skill-number">03</span><div><h3>Curiosity in practice</h3><p>Computer vision · Automation · AWS</p></div><span aria-hidden="true">↗</span></div></div><a class="text-link" href="files/Resume_Menashe_Hoffner.pdf" target="_blank" rel="noopener">Get the full picture — my résumé <span aria-hidden="true">↗</span></a></div>
+    </div></section>
+    <section class="contact-section wrap" id="contact" aria-labelledby="contact-heading"><p class="eyebrow section-kicker">03 / WHAT’S NEXT?</p><div class="contact-title"><h2 id="contact-heading">Have something<br>in <em>mind?</em></h2><a class="contact-arrow" href="mailto:menasheho@gmail.com" aria-label="Email Menashe"><span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><p>A project, an opportunity, or just a good conversation.<br>I’d love to hear from you.</p><div class="email-group"><a href="mailto:menasheho@gmail.com">menasheho@gmail.com</a><button id="copy-email" aria-label="Copy email address" title="Copy email address"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></button><span id="copy-status" class="copy-status" role="status"></span></div></div></section>
+  </main>
+  <footer class="site-footer wrap"><a class="brand" href="#" aria-label="Back to top">mh<span>.</span></a><p>© <span id="year">2026</span> Menashe Hoffner. Built with intention.</p><div class="social-row"><a href="https://github.com/Menashe-HFR" target="_blank" rel="noopener">GitHub ↗</a><a href="https://www.linkedin.com/in/menasheho/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://youtube.com/playlist?list=PL5MFoRJmoMGg66X_zGDpmaps_6xyPIiBt" target="_blank" rel="noopener">YouTube ↗</a></div><a class="back-top" href="#" aria-label="Back to top">↑</a></footer>
+</body>
 </html>
