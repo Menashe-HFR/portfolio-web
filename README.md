@@ -2,6 +2,8 @@
 
 A responsive, buildless portfolio with a custom WebGL sculpture, filterable project gallery, and individual project pages. Built with HTML, CSS, and vanilla JavaScript. Compatible with GitHub Pages, including deployment under `/portfolio-web/`.
 
+The visual theme uses warm ivory, mint, and sky blue with dark readable text. Sage, Ice, and Ember retain accessible text accents while tinting the sculpture separately. The game uses a pastel nebula, a blue ringed planet, and light translucent controls; its background is still cached once per resize.
+
 ## Preview locally
 
 From this directory, run:
@@ -47,7 +49,7 @@ Project content is local, trusted HTML; do not populate it from untrusted user i
 
 ## Orbital Archive game
 
-`game.html` is a playable space exploration portfolio. The homepage’s primary action opens it; the standard gallery, résumé, and contact remain directly accessible.
+`game.html` is a playable space exploration portfolio. The homepage introduces Menashe and links directly to the gallery. Two inviting game cards are visible in the opening section, with larger previews in the playground; both games are optional. The gallery, résumé, and contact remain directly accessible.
 
 - Fly with physical WASD keys or arrow keys. Hold Space to boost, P or Escape to pause. A mouse drag or the mobile direction pad also steers the ship.
 - Follow the diamonds, avoid asteroids, and align with the three project portals. Recovering a portal awards 250 points and opens that real project’s description, demo, and case study. Each data fragment awards 25 points.
@@ -63,6 +65,12 @@ Run the simulation checks with:
 ```sh
 node --test tests/flight-engine.test.cjs
 ```
+
+## Sunday Drive
+
+`drive.html` is a sunny, optional road trip with a small coral car, a winding cream road, trees, cottages, collectible stars, and three project stops. Steer with Left/Right or A/D, hold Space to accelerate, and use P/Escape or the pause button to pull over. Mobile has held steering and boost controls. Cones briefly slow the car; there is no game-over gate. Every project stop links directly to its case study, and completion shows all projects together.
+
+Rendering is dependency-free Canvas 2D with capped pixel density. It runs only during a started drive and pauses on blur or a hidden tab. `drive-engine.js` separates deterministic movement, stops, collectibles, and collisions from presentation. Run both game suites with `node --test tests/*.test.cjs`.
 
 ## Publish on GitHub Pages
 

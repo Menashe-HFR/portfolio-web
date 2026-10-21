@@ -102,7 +102,7 @@
     let wireframe=false, dragging=false, dragPointer=null, lastDragX=0, lastDragY=0, demandFrame=0;
     let tint=[.765,.96,.55];
     function readTint() {
-      const hex=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      const hex=getComputedStyle(document.documentElement).getPropertyValue('--art-tint').trim() || getComputedStyle(document.documentElement).getPropertyValue('--art-tint').trim() || getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
       if (/^#[\da-f]{6}$/i.test(hex)) tint=[1,3,5].map(offset=>parseInt(hex.slice(offset,offset+2),16)/255);
     }
     readTint();
